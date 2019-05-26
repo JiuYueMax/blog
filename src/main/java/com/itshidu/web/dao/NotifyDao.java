@@ -1,0 +1,17 @@
+package com.itshidu.web.dao;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.itshidu.web.entity.Notify;
+
+public interface NotifyDao extends JpaRepository<Notify, Long>{
+
+	@Query("from Notify n where n.user.id=?1")
+	Page<Notify> findByUser(long userId,Pageable pageable);
+	
+	
+	
+}
